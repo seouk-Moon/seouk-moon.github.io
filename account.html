@@ -1,0 +1,7 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="same-origin"><title>MOONS · 통합 계정</title></head><body><p>통합 계정 화면을 여는 중…</p><a href="/moonwords/account.html">MOONS 통합 로그인</a><script>
+// Stable public account address; the existing same-origin session stays intact.
+const input=new URLSearchParams(location.search),target=new URL('/moonwords/account.html',location.origin);
+if(input.get('mode')==='settings')target.searchParams.set('mode','settings');
+if(input.has('return')){try{const next=new URL(input.get('return'),location.origin);if(next.origin===location.origin&&!['/account.html','/moonwords/account.html'].includes(next.pathname)){['access_token','refresh_token','code','token_hash','provider_token','provider_refresh_token'].forEach(key=>next.searchParams.delete(key));target.searchParams.set('return',next.pathname+next.search);}}catch{}}
+location.replace(target.pathname+target.search);
+</script></body></html>
